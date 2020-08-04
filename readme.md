@@ -1,19 +1,8 @@
-# Basic Maven Project
+# JQAssistant Maven Analyze
 
-This is a basic Maven-based Java project created with the use of the [Library Maven Archetype](https://github.com/Bernardo-MG/library-maven-archetype). It will ease the development of new libraries, setting it up for CI through the use of three free services: [Github](https://github.com/), [Travis](https://travis-ci.org) and [Bintray](https://bintray.com/).
+Maven project ready to analyze another Maven project.
 
-Before beginning with the new project there are a few things which should be edited:
-
-- This readme's description has to be adapted to the new project.
-- Project info on the POM should be checked.
-- The various links on the readme, POM and Maven site (for repositories, issues, etc) should be verified.
-- The documentation on the project's [Maven Site](https://maven.apache.org/plugins/maven-site-plugin/) has to be written.
-- The license, if not using the MIT one, should be changed. Remember that this is referenced on the POM, readme and LICENSE files.
-
-Note that the Maven site is using the [Docs Maven Skin](https://github.com/Bernardo-MG/docs-maven-skin), which will have a few configuration requirements of its own.
-
-[![Maven Central](https://img.shields.io/maven-central/v/com.bernardomg.jqassistant/jqassistant-maven-analyzer.svg)][maven-repo]
-[![Bintray](https://api.bintray.com/packages/bernardo-mg/maven/jqassistant-maven-analyzer/images/download.svg)][bintray-repo]
+Can be used by itself, to generate JQAssistant reports, and the Neo4j database. Or may be used as a basis to set up JQAssistant on a Maven project.
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
