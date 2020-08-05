@@ -59,13 +59,15 @@ This will give access to two dashboards, one for Neo4J, another for JQAssistant:
 
 ### Scanned Project
 
-To get all the information run the tests and generate the site before analyzing:
+JQAssistan will scan .class files, along other artifacts. And even additional reports from tools such as JaCoCo or PMD. For this reason the scanned project should be compiled before scanning. 
+
+It is recommended using this command:
 
 ```
 mvn verify site
 ```
 
-This will make the artifacts and tests results available. These will be scanned in addition to the code.
+This way not only the compiled code, but also all the artifacts from testing and the site reports will be available.
 
 ## Collaborate
 
