@@ -88,8 +88,6 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[bintray-repo]: https://bintray.com/bernardo-mg/maven/jqassistant-maven-analyzer/view
-[maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.jqassistant/jqassistant-maven-analyzer
 [issues]: https://github.com/bernardo-mg/jqassistant-maven-analyzer/issues
 [license]: https://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/jqassistant-maven-analyzer
