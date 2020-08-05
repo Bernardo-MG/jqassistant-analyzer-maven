@@ -206,9 +206,6 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <guava.version>29.0-jre</guava.version>
-      <junit.jupiter.version>5.6.2</junit.jupiter.version>
-      <mockito.version>3.3.3</mockito.version>
       <log4j.version>2.13.3</log4j.version>
       <slf4j.version>1.7.30</slf4j.version>
       <plugin.jqassistant.version>1.8.0</plugin.jqassistant.version>
@@ -231,26 +228,7 @@
    <!-- *************** DEPENDENCIES ***************** -->
    <!-- ********************************************** -->
 
-   <dependencyManagement>
-      <dependencies>
-         <dependency>
-            <!-- JUnit BOM -->
-            <groupId>org.junit</groupId>
-            <artifactId>junit-bom</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-         </dependency>
-      </dependencies>
-   </dependencyManagement>
-
    <dependencies>
-      <dependency>
-         <!-- Guava -->
-         <groupId>com.google.guava</groupId>
-         <artifactId>guava</artifactId>
-         <version>${guava.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGERS =================== -->
       <!-- ============================================== -->
@@ -273,28 +251,6 @@
          <artifactId>log4j-core</artifactId>
          <version>${log4j.version}</version>
          <scope>provided</scope>
-      </dependency>
-      <!-- ============================================== -->
-      <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
-      <!-- ============================================== -->
-      <dependency>
-         <!-- JUnit Jupiter Engine -->
-         <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter-engine</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- JUnit Jupiter Platform -->
-         <groupId>org.junit.platform</groupId>
-         <artifactId>junit-platform-runner</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Mockito -->
-         <groupId>org.mockito</groupId>
-         <artifactId>mockito-core</artifactId>
-         <version>${mockito.version}</version>
-         <scope>test</scope>
       </dependency>
    </dependencies>
 
