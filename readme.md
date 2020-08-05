@@ -7,9 +7,6 @@ Can be used by itself, as a gateway to use JQAssistant. Or may be used as a basi
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
 
-[![Release javadocs](https://img.shields.io/badge/javadocs-release-blue.svg)][javadoc-release]
-[![Development javadocs](https://img.shields.io/badge/javadocs-develop-blue.svg)][javadoc-develop]
-
 ## Features
 
 - Ready to use JQAssistant setup
@@ -19,12 +16,10 @@ Can be used by itself, as a gateway to use JQAssistant. Or may be used as a basi
 Documentation is always generated for the latest release, kept in the 'master' branch:
 
 - The [latest release documentation page][site-release].
-- The [latest release Javadoc site][javadoc-release].
 
 Documentation is also generated from the latest snapshot, taken from the 'develop' branch:
 
 - The [the latest snapshot documentation page][site-develop].
-- The [latest snapshot Javadoc site][javadoc-develop].
 
 ### Building the docs
 
@@ -81,8 +76,6 @@ The project has been released under the [MIT License][license].
 [bintray-repo]: https://bintray.com/bernardo-mg/maven/jqassistant-maven-analyzer/view
 [maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.jqassistant/jqassistant-maven-analyzer
 [issues]: https://github.com/bernardo-mg/jqassistant-maven-analyzer/issues
-[javadoc-develop]: https:///jqassistant-maven-analyzer/apidocs
-[javadoc-release]: https:///jqassistant-maven-analyzer/apidocs
 [license]: https://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/jqassistant-maven-analyzer
 [site-develop]: https:///jqassistant-maven-analyzer
