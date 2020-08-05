@@ -43,6 +43,7 @@ tmp/**/*
 local.properties
 /src/main/resources/rebel.xml
 .springBeans
+.factorypath
 
 # IntelliJ Idea files #
 .idea

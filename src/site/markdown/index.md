@@ -1,4 +1,4 @@
-# JQAssistant Maven Analyze
+# JQAssistant Maven Analyzer
 
 Maven project ready to analyze another Maven project.
 
