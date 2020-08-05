@@ -10,6 +10,9 @@ Can be used by itself, as a gateway to use JQAssistant. Or may be used as a basi
 ## Features
 
 - Ready to use JQAssistant setup
+- JQAssistant dashboard
+- Java scan
+- git scan
 
 ## Documentation
 
@@ -53,6 +56,16 @@ This will give access to two dashboards, one for Neo4J, another for JQAssistant:
 | ------------------------------------------- | ------------- |
 | http://localhost:7474                       | Neo4j         |
 | http://localhost:7474/jqassistant/dashboard | JQAssistant   |
+
+### Scanned Project
+
+To get all the information run the tests and generate the site before analyzing:
+
+```
+mvn verify site
+```
+
+This will make the artifacts and tests results available. These will be scanned in addition to the code.
 
 ## Collaborate
 
