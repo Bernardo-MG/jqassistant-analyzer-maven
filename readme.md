@@ -91,7 +91,7 @@ The project has been released under the [MIT License][license].
 [issues]: https://github.com/bernardo-mg/jqassistant-maven-analyzer/issues
 [license]: https://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/jqassistant-maven-analyzer
-[site-develop]: https:///jqassistant-maven-analyzer
-[site-release]: https:///jqassistant-maven-analyzer
+[site-develop]: https://docs.bernardomg.com/development/maven/jqassistant-maven-analyzer
+[site-release]: https://docs.bernardomg.com/maven/jqassistant-maven-analyzer
 
 [jqassistant-plugin]: https://github.com/kontext-e/jqassistant-plugins

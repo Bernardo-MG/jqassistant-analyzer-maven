@@ -54,8 +54,8 @@
    </issueManagement>
 
    <ciManagement>
-      <system>Travis CI</system>
-      <url>https://travis-ci.org/bernardo-mg/jqassistant-maven-analyzer</url>
+      <system>Github Workflow</system>
+      <url>https://github.com/Bernardo-MG/jqassistant-maven-analyzer/actions</url>
       <notifiers />
    </ciManagement>
 
