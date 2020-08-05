@@ -23,8 +23,8 @@
    <version>0.0.1-SNAPSHOT</version>
    <packaging>jar</packaging>
 
-   <name>Basic Maven Project</name>
-   <description>A Maven project created from the library archetype.</description>
+   <name>JQAssistant Maven Analyzer</name>
+   <description>Maven project for analyzing with JQAssistant</description>
    <url>https://github.com/bernardo-mg/jqassistant-maven-analyzer</url>
    <inceptionYear>2020</inceptionYear>
 
@@ -200,6 +200,10 @@
       <!-- ============================================== -->
       <manifest.name>com/bernardomg/jqassistant</manifest.name>
       <!-- ============================================== -->
+      <!-- ================= ANALYSIS =================== -->
+      <!-- ============================================== -->
+      <scan.path></scan.path>
+      <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
       <guava.version>29.0-jre</guava.version>
@@ -207,6 +211,14 @@
       <mockito.version>3.3.3</mockito.version>
       <log4j.version>2.13.3</log4j.version>
       <slf4j.version>1.7.30</slf4j.version>
+      <plugin.jqassistant.version>1.8.0</plugin.jqassistant.version>
+      <plugin.jqassistant.apoc.version>${plugin.jqassistant.version}</plugin.jqassistant.apoc.version>
+      <plugin.jqassistant.dashboard.version>${plugin.jqassistant.version}</plugin.jqassistant.dashboard.version>
+      <plugin.jqassistant.git.version>${plugin.jqassistant.version}</plugin.jqassistant.git.version>
+      <plugin.jqassistant.graphalg.version>${plugin.jqassistant.version}</plugin.jqassistant.graphalg.version>
+      <plugin.jqassistant.jacoco.version>${plugin.jqassistant.version}</plugin.jqassistant.jacoco.version>
+      <plugin.jqassistant.plantuml.version>${plugin.jqassistant.version}</plugin.jqassistant.plantuml.version>
+      <plugin.jqassistant.pmd.version>${plugin.jqassistant.version}</plugin.jqassistant.pmd.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
@@ -291,7 +303,18 @@
    <!-- ********************************************** -->
 
    <build>
-      <defaultGoal>clean package install</defaultGoal>
+      <defaultGoal>clean package</defaultGoal>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <!-- JQAssistant -->
+               <!-- Architecture analysis tool. -->
+               <groupId>com.buschmais.jqassistant</groupId>
+               <artifactId>jqassistant-maven-plugin</artifactId>
+               <version>${plugin.jqassistant.version}</version>
+            </plugin>
+         </plugins>
+      </pluginManagement>
       <plugins>
          <plugin>
             <!-- Changes -->
@@ -331,6 +354,104 @@
                   <groupId>com.bernardomg.maven.skins</groupId>
                   <artifactId>docs-maven-skin</artifactId>
                   <version>${site.skin.version}</version>
+               </dependency>
+            </dependencies>
+         </plugin>
+         <plugin>
+            <!-- JQAssistant -->
+            <!-- Architecture analysis tool. -->
+            <groupId>com.buschmais.jqassistant</groupId>
+            <artifactId>jqassistant-maven-plugin</artifactId>
+            <executions>
+               <execution>
+                  <id>jqassistant-scan</id>
+                  <goals>
+                     <goal>scan</goal>
+                  </goals>
+                  <configuration>
+                     <scanIncludes>
+                        <scanInclude>
+                           <path>${scan.path}</path>
+                        </scanInclude>
+                     </scanIncludes>
+                  </configuration>
+               </execution>
+               <execution>
+                  <id>jqassistant-analyze</id>
+                  <goals>
+                     <goal>analyze</goal>
+                  </goals>
+                  <configuration>
+                     <groups>
+                        <group>junit4:Default</group>
+                        <group>spring-boot:Strict</group>
+                        <group>jqassistant-dashboard:Default</group>
+                     </groups>
+                     <concepts>
+                        <!-- <concept>cdi:*</concept> -->
+                        <!-- <concept>classpath:*</concept> -->
+                        <!-- <concept>decorator:*</concept> -->
+                        <!-- <concept>dependency:*</concept> -->
+                        <!-- <concept>ejb3:*</concept> -->
+                        <concept>git:*</concept>
+                        <!-- <concept>interceptor:*</concept> -->
+                        <concept>java:*</concept>
+                        <concept>java8:*</concept>
+                        <!-- <concept>jaxrs:*</concept> -->
+                        <concept>jpa2:*</concept>
+                        <concept>junit:*</concept>
+                        <concept>junit4:*</concept>
+                        <!-- <concept>osgi-bundle:*</concept> -->
+                        <concept>spring-boot:*</concept>
+                        <concept>spring-component:*</concept>
+                        <concept>spring-data:*</concept>
+                        <concept>spring-injection:*</concept>
+                        <concept>spring-transaction:*</concept>
+                     </concepts>
+                     <warnOnSeverity>MINOR</warnOnSeverity>
+                     <failOnSeverity>CRITICAL</failOnSeverity>
+                     <rule>
+                        <defaultConceptSeverity>INFO</defaultConceptSeverity>
+                     </rule>
+                  </configuration>
+               </execution>
+            </executions>
+            <dependencies>
+               <dependency>
+                  <!-- JQA Cypher APOC plugin -->
+                  <groupId>org.jqassistant.contrib.plugin</groupId>
+                  <artifactId>jqassistant-apoc-plugin</artifactId>
+                  <version>${plugin.jqassistant.apoc.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA graph algorithms plugin -->
+                  <groupId>org.jqassistant.contrib.plugin</groupId>
+                  <artifactId>jqassistant-graph-algorithms-plugin</artifactId>
+                  <version>${plugin.jqassistant.graphalg.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA advanced dashboard plugin -->
+                  <groupId>org.jqassistant.contrib.plugin</groupId>
+                  <artifactId>jqassistant-dashboard-plugin</artifactId>
+                  <version>${plugin.jqassistant.dashboard.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA PlantUML plugin -->
+                  <groupId>org.jqassistant.contrib.plugin</groupId>
+                  <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
+                  <version>${plugin.jqassistant.plantuml.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA JaCoCo plugin -->
+                  <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                  <artifactId>jqassistant.plugin.jacoco</artifactId>
+                  <version>${plugin.jqassistant.jacoco.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA PMD plugin -->
+                  <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                  <artifactId>jqassistant.plugin.pmd</artifactId>
+                  <version>${plugin.jqassistant.pmd.version}</version>
                </dependency>
             </dependencies>
          </plugin>
@@ -393,6 +514,19 @@
                   <exclude>**/generated/**/*</exclude>
                </excludes>
             </configuration>
+         </plugin>
+         <plugin>
+            <!-- JQAssistant -->
+            <!-- Architecture analysis tool. -->
+            <groupId>com.buschmais.jqassistant</groupId>
+            <artifactId>jqassistant-maven-plugin</artifactId>
+            <reportSets>
+               <reportSet>
+                  <reports>
+                     <report>report</report>
+                  </reports>
+               </reportSet>
+            </reportSets>
          </plugin>
       </plugins>
    </reporting>

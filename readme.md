@@ -1,8 +1,8 @@
-# JQAssistant Maven Analyze
+# JQAssistant Maven Analyzer
 
-Maven project ready to analyze another Maven project.
+Maven project for analyzing with JQAssistant.
 
-Can be used by itself, to generate JQAssistant reports, and the Neo4j database. Or may be used as a basis to set up JQAssistant on a Maven project.
+Can be used by itself, as a gateway to use JQAssistant. Or may be used as a basis to set up JQAssistant on a Maven project.
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
