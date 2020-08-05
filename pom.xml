@@ -54,7 +54,7 @@
    </issueManagement>
 
    <ciManagement>
-      <system>Github Workflow</system>
+      <system>Github</system>
       <url>https://github.com/Bernardo-MG/jqassistant-maven-analyzer/actions</url>
       <notifiers />
    </ciManagement>
