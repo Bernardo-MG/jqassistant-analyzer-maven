@@ -219,36 +219,6 @@
    </properties>
 
    <!-- ********************************************** -->
-   <!-- *************** DEPENDENCIES ***************** -->
-   <!-- ********************************************** -->
-
-   <dependencies>
-      <!-- ============================================== -->
-      <!-- ================== LOGGERS =================== -->
-      <!-- ============================================== -->
-      <dependency>
-         <!-- SLF4J API -->
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-         <version>${slf4j.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Log4j core -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-core</artifactId>
-         <version>${log4j.version}</version>
-         <scope>provided</scope>
-      </dependency>
-   </dependencies>
-
-   <!-- ********************************************** -->
    <!-- ******************* BUILD ******************** -->
    <!-- ********************************************** -->
 
