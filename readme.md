@@ -67,6 +67,22 @@ For this reason the following command should be run, on the scanned project, bef
 mvn verify site
 ```
 
+### Memory Problems
+
+On big projects the scanning may crash due to memory limits. The problem can be reduced by increasing the memory available to Maven before running:
+
+Use this command for Windows:
+
+```
+set MAVEN_OPTS=-Xmx4g -Xss1g
+```
+
+Or this for Linux:
+
+```
+export MAVEN_OPTS="-Xmx4g -Xss1g"
+```
+
 ## Collaborate
 
 Any kind of help with the project will be well received, and there are two main ways to give such help:
