@@ -9,7 +9,7 @@ Can be used by itself, as a gateway for JQAssistant. Or may be used as a basis t
 
 ## Features
 
-- Ready to use JQAssistant setup
+- Maven-based JQAssistant setup
 - JQAssistant dashboard
 - Java scan
 - git scan
