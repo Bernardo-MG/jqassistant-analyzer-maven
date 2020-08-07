@@ -1,14 +1,22 @@
 <document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
-    <properties>
-        <title>Project Changes</title>
-        <author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
-    </properties>
-    <body>
-        <release version="1.0.0" date="2020-08-05" description="First release">
-            <action dev="bmg" type="update">
-                First release.
-            </action>
-        </release>
-    </body>
+   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+   <properties>
+      <title>Project Changes</title>
+      <author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
+   </properties>
+   <body>
+      <release version="1.0.0" date="2020-08-05" description="First release">
+         <action dev="bmg" type="update">
+            First release.
+         </action>
+      </release>
+      <release version="1.0.1" date="2020-08-07" description="Cleaned up">
+         <action dev="bmg" type="update">
+            Corrected docs.
+         </action>
+         <action dev="bmg" type="update">
+            Cleaned up project.
+         </action>
+      </release>
+   </body>
 </document>

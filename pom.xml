@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
    <modelVersion>4.0.0</modelVersion>
@@ -21,7 +20,7 @@
 
    <groupId>com.bernardomg.jqassistant</groupId>
    <artifactId>jqassistant-maven-analyzer</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <packaging>jar</packaging>
 
    <name>JQAssistant Maven Analyzer</name>
@@ -81,10 +80,8 @@
    <profiles>
       <profile>
          <!-- Profile for the Eclipse Maven plugin -->
-         <!-- Sets the POM so this plugin does not give the usual unregistered 
-            goals errors -->
-         <!-- It will be activated automatically on Eclipse if this has the 
-            m2e plugin, by detecting the version property -->
+         <!-- Sets the POM so this plugin does not give the usual unregistered goals errors -->
+         <!-- It will be activated automatically on Eclipse if this has the m2e plugin, by detecting the version property -->
          <id>eclipse-maven</id>
          <activation>
             <property>
@@ -96,22 +93,16 @@
                <plugins>
                   <plugin>
                      <!-- m2e lifecycle mapping -->
-                     <!-- This is used to configure the Maven plugin for 
-                        Eclipse. -->
-                     <!-- Among other things, it allows registering goals, 
-                        which Eclipse would otherwise reject. -->
+                     <!-- This is used to configure the Maven plugin for Eclipse. -->
+                     <!-- Among other things, it allows registering goals, which Eclipse would otherwise reject. -->
                      <!-- It has no real effect on Maven. -->
                      <groupId>org.eclipse.m2e</groupId>
                      <artifactId>lifecycle-mapping</artifactId>
                      <configuration>
                         <!-- Sample fix for plugin executions. -->
-                        <!-- This is to be used in case a Maven plugin gives 
-                           problems in Eclipse -->
-                        <!-- <lifecycleMappingMetadata> <pluginExecutions> 
-                           <pluginExecution> <pluginExecutionFilter> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
-                           <versionRange>[0.5,)</versionRange> <goals> <goal>prepare-agent</goal> </goals> 
-                           </pluginExecutionFilter> <action> <ignore /> </action> </pluginExecution> 
-                           </pluginExecutions> </lifecycleMappingMetadata> -->
+                        <!-- This is to be used in case a Maven plugin gives problems in Eclipse -->
+                        <!-- <lifecycleMappingMetadata> <pluginExecutions> <pluginExecution> <pluginExecutionFilter> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <versionRange>[0.5,)</versionRange> 
+                           <goals> <goal>prepare-agent</goal> </goals> </pluginExecutionFilter> <action> <ignore /> </action> </pluginExecution> </pluginExecutions> </lifecycleMappingMetadata> -->
                         <downloadSources>true</downloadSources>
                         <downloadJavadocs>true</downloadJavadocs>
                      </configuration>
@@ -228,36 +219,6 @@
    </properties>
 
    <!-- ********************************************** -->
-   <!-- *************** DEPENDENCIES ***************** -->
-   <!-- ********************************************** -->
-
-   <dependencies>
-      <!-- ============================================== -->
-      <!-- ================== LOGGERS =================== -->
-      <!-- ============================================== -->
-      <dependency>
-         <!-- SLF4J API -->
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-         <version>${slf4j.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Log4j core -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-core</artifactId>
-         <version>${log4j.version}</version>
-         <scope>provided</scope>
-      </dependency>
-   </dependencies>
-
-   <!-- ********************************************** -->
    <!-- ******************* BUILD ******************** -->
    <!-- ********************************************** -->
 
@@ -334,6 +295,10 @@
                            <path>${scan.path}</path>
                         </scanInclude>
                      </scanIncludes>
+                     <scanProperties>
+                        <!-- <maven3.dependencies.scan>true</maven3.dependencies.scan> -->
+                        <!-- <maven3.dependencies.includes>org.springframework*:*:*</maven3.dependencies.includes> -->
+                     </scanProperties>
                   </configuration>
                </execution>
                <execution>
