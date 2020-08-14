@@ -1,0 +1,22 @@
+== Graph Prunning
+
+[[prunning:Default]]
+[role=group,includesConstraints="prunning:*"]
+== Default Rules
+
+[[prunning:MergeDuplicatedClasses]]
+.Merges duplicated classes, not methods or relationships
+[source,cypher,role=concept]
+----
+MATCH
+   (left:Type),
+   (right:Type)
+WHERE
+   left.fqn = right.fqn and id(left) < id(right)
+WITH
+   [left,right] as nodes
+CALL
+   apoc.refactor.mergeNodes(nodes) YIELD node
+RETURN
+   node
+----
