@@ -9,15 +9,15 @@
 [source,cypher,role=concept]
 ----
 MATCH
-   (left:Type),
-   (right:Type)
-WHERE
-   left.fqn = right.fqn
-   AND id(left) < id(right)
+   (node:Type)
 WITH
-   [left,right] as nodes
+   node.fqn AS name,
+   COLLECT(node) AS nodes,
+   COUNT(*) AS count
+WHERE
+   count > 1
 CALL
-   apoc.refactor.mergeNodes(nodes) YIELD node
+   apoc.refactor.mergeNodes(nodes, {mergeRels: true}) YIELD node
 RETURN
    node
 ----
