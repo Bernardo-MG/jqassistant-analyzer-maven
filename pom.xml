@@ -145,6 +145,9 @@
                            <groups>
                               <group>prunning:Default</group>
                            </groups>
+                           <concepts>
+                              <concept>prunning:*</concept>
+                           </concepts>
                            <warnOnSeverity>MINOR</warnOnSeverity>
                            <failOnSeverity>CRITICAL</failOnSeverity>
                            <rule>
