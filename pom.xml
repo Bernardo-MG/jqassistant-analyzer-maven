@@ -298,8 +298,23 @@
                   <configuration>
                      <scanIncludes>
                         <scanInclude>
-                           <!-- Project root -->
+                           <!-- Maven project root -->
                            <path>${scan.path}</path>
+                           <scope>maven:project</scope>
+                        </scanInclude>
+                        <scanInclude>
+                           <!-- Maven project code -->
+                           <path>${scan.path}/src</path>
+                           <scope>java:classpath</scope>
+                        </scanInclude>
+                        <scanInclude>
+                           <!-- Maven project classes -->
+                           <path>${scan.path}/target/classes</path>
+                           <scope>java:classpath</scope>
+                        </scanInclude>
+                        <scanInclude>
+                           <!-- git repository -->
+                           <path>${scan.path}/.git</path>
                         </scanInclude>
                      </scanIncludes>
                      <scanProperties>
