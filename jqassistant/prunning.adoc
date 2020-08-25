@@ -5,7 +5,7 @@
 == Default Rules
 
 [[prunning:MergeDuplicatedClasses]]
-.Merges duplicated classes, not methods or relationships
+.Merges duplicated classes and relationships, not methods
 [source,cypher,role=concept]
 ----
 MATCH
