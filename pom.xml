@@ -125,9 +125,9 @@
       <!-- =============== JQA PROFILES ================= -->
       <!-- ============================================== -->
       <profile>
-         <!-- Graph prunnning profile. -->
+         <!-- Graph merge profile. -->
          <!-- Cleans up the generated graph -->
-         <id>prunning</id>
+         <id>merge</id>
          <build>
             <plugins>
                <plugin>
@@ -143,10 +143,10 @@
                         </goals>
                         <configuration>
                            <groups>
-                              <group>prunning:Default</group>
+                              <group>merge:Default</group>
                            </groups>
                            <concepts>
-                              <concept>prunning:*</concept>
+                              <concept>merge:*</concept>
                            </concepts>
                            <warnOnSeverity>MINOR</warnOnSeverity>
                            <failOnSeverity>CRITICAL</failOnSeverity>
