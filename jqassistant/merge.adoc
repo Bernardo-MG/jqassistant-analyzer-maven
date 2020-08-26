@@ -4,12 +4,12 @@
 [role=group,includesConstraints="merge:*"]
 == Default Rules
 
-[[merge:MergeDuplicatedJava]]
-.Merges duplicated Java nodes and their relationships
+[[merge:MergeDuplicatedTypes]]
+.Merges duplicated Java type nodes and their relationships
 [source,cypher,role=concept]
 ----
 MATCH
-   (node:Java)
+   (node:Java:Type)
 WITH
    node.fqn AS name,
    COLLECT(node) AS nodes,
