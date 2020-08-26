@@ -1,10 +1,10 @@
-== Graph Prunning
+== Graph Merge
 
-[[prunning:Default]]
-[role=group,includesConstraints="prunning:*"]
+[[merge:Default]]
+[role=group,includesConstraints="merge:*"]
 == Default Rules
 
-[[prunning:MergeDuplicatedJava]]
+[[merge:MergeDuplicatedJava]]
 .Merges duplicated Java nodes and their relationships
 [source,cypher,role=concept]
 ----
