@@ -57,6 +57,14 @@ This will give access to two dashboards, one for Neo4J, another for JQAssistant:
 | http://localhost:7474                       | Neo4j         |
 | http://localhost:7474/jqassistant/dashboard | JQAssistant   |
 
+### Cleaning Up the Graph
+
+On complex or multimodule projects some classes may appear duplicated. The merge profile will fix this:
+
+```
+mvn clean verify -Pmerge -Dscan.path=[path to project]
+```
+
 ### Scanned Project
 
 It's important having access to the .class files of the scanned project. And it can be useful adding also reports and test results.
