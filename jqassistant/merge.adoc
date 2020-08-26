@@ -4,12 +4,12 @@
 [role=group,includesConstraints="prunning:*"]
 == Default Rules
 
-[[prunning:MergeDuplicatedClasses]]
-.Merges duplicated classes and relationships, not methods
+[[prunning:MergeDuplicatedJava]]
+.Merges duplicated Java nodes and their relationships
 [source,cypher,role=concept]
 ----
 MATCH
-   (node:Type)
+   (node:Java)
 WITH
    node.fqn AS name,
    COLLECT(node) AS nodes,
