@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
    <modelVersion>4.0.0</modelVersion>
@@ -20,7 +21,7 @@
 
    <groupId>com.bernardomg.jqassistant</groupId>
    <artifactId>jqassistant-maven-analyzer</artifactId>
-   <version>1.0.1</version>
+   <version>1.1.0</version>
    <packaging>jar</packaging>
 
    <name>JQAssistant Maven Analyzer</name>
@@ -78,39 +79,6 @@
    <!-- ********************************************** -->
 
    <profiles>
-      <profile>
-         <!-- Profile for the Eclipse Maven plugin -->
-         <!-- Sets the POM so this plugin does not give the usual unregistered goals errors -->
-         <!-- It will be activated automatically on Eclipse if this has the m2e plugin, by detecting the version property -->
-         <id>eclipse-maven</id>
-         <activation>
-            <property>
-               <name>m2e.version</name>
-            </property>
-         </activation>
-         <build>
-            <pluginManagement>
-               <plugins>
-                  <plugin>
-                     <!-- m2e lifecycle mapping -->
-                     <!-- This is used to configure the Maven plugin for Eclipse. -->
-                     <!-- Among other things, it allows registering goals, which Eclipse would otherwise reject. -->
-                     <!-- It has no real effect on Maven. -->
-                     <groupId>org.eclipse.m2e</groupId>
-                     <artifactId>lifecycle-mapping</artifactId>
-                     <configuration>
-                        <!-- Sample fix for plugin executions. -->
-                        <!-- This is to be used in case a Maven plugin gives problems in Eclipse -->
-                        <!-- <lifecycleMappingMetadata> <pluginExecutions> <pluginExecution> <pluginExecutionFilter> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <versionRange>[0.5,)</versionRange> 
-                           <goals> <goal>prepare-agent</goal> </goals> </pluginExecutionFilter> <action> <ignore /> </action> </pluginExecution> </pluginExecutions> </lifecycleMappingMetadata> -->
-                        <downloadSources>true</downloadSources>
-                        <downloadJavadocs>true</downloadJavadocs>
-                     </configuration>
-                  </plugin>
-               </plugins>
-            </pluginManagement>
-         </build>
-      </profile>
       <!-- ============================================== -->
       <!-- ============ DEPLOYMENT PROFILES ============= -->
       <!-- ============================================== -->
@@ -152,6 +120,45 @@
             <!-- Tests are skipped. -->
             <maven.test.skip>true</maven.test.skip>
          </properties>
+      </profile>
+      <!-- ============================================== -->
+      <!-- =============== JQA PROFILES ================= -->
+      <!-- ============================================== -->
+      <profile>
+         <!-- Graph merge profile. -->
+         <!-- Cleans up the generated graph -->
+         <id>merge</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <!-- JQAssistant -->
+                  <!-- Architecture analysis tool. -->
+                  <groupId>com.buschmais.jqassistant</groupId>
+                  <artifactId>jqassistant-maven-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>jqassistant-prune</id>
+                        <goals>
+                           <goal>analyze</goal>
+                        </goals>
+                        <configuration>
+                           <groups>
+                              <group>merge:Default</group>
+                           </groups>
+                           <concepts>
+                              <concept>merge:*</concept>
+                           </concepts>
+                           <warnOnSeverity>MINOR</warnOnSeverity>
+                           <failOnSeverity>CRITICAL</failOnSeverity>
+                           <rule>
+                              <defaultConceptSeverity>INFO</defaultConceptSeverity>
+                           </rule>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
       </profile>
    </profiles>
 
@@ -291,7 +298,7 @@
                   <configuration>
                      <scanIncludes>
                         <scanInclude>
-                           <!-- Project root -->
+                           <!-- Scanned project -->
                            <path>${scan.path}</path>
                         </scanInclude>
                      </scanIncludes>

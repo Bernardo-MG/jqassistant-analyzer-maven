@@ -1,15 +1,15 @@
 # JQAssistant Maven Analyzer
 
-Maven project for analyzing with JQAssistant.
+Maven project for analyzing with [JQAssistant](https://jqassistant.org/).
 
-Can be used by itself, as a gateway to use JQAssistant. Or may be used as a basis to set up JQAssistant on a Maven project.
+Can be used by itself, as a gateway for JQAssistant. Or may be used as a basis to add JQAssistant on a Maven project.
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
 
 ## Features
 
-- Ready to use JQAssistant setup
+- Maven-based JQAssistant setup
 - JQAssistant dashboard
 - Java scan
 - git scan
@@ -57,6 +57,14 @@ This will give access to two dashboards, one for Neo4J, another for JQAssistant:
 | http://localhost:7474                       | Neo4j         |
 | http://localhost:7474/jqassistant/dashboard | JQAssistant   |
 
+### Cleaning Up the Graph
+
+On complex or multimodule projects some classes may appear duplicated. The merge profile will fix this:
+
+```
+mvn clean verify -Pmerge -Dscan.path=[path to project]
+```
+
 ### Scanned Project
 
 It's important having access to the .class files of the scanned project. And it can be useful adding also reports and test results.
@@ -65,6 +73,22 @@ For this reason the following command should be run, on the scanned project, bef
 
 ```
 mvn verify site
+```
+
+### Memory Problems
+
+On big projects the scanning may crash due to memory limits. The problem can be reduced by increasing the memory available to Maven before running:
+
+Use this command for Windows:
+
+```
+set MAVEN_OPTS=-Xmx4g -Xss1g
+```
+
+Or this for Linux:
+
+```
+export MAVEN_OPTS="-Xmx4g -Xss1g"
 ```
 
 ## Collaborate

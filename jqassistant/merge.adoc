@@ -1,0 +1,23 @@
+== Graph Merge
+
+[[merge:Default]]
+[role=group,includesConstraints="merge:*"]
+== Default Rules
+
+[[merge:MergeDuplicatedTypes]]
+.Merges duplicated Java type nodes and their relationships
+[source,cypher,role=concept]
+----
+MATCH
+   (node:Java:Type)
+WITH
+   node.fqn AS name,
+   COLLECT(node) AS nodes,
+   COUNT(*) AS count
+WHERE
+   count > 1
+CALL
+   apoc.refactor.mergeNodes(nodes, {mergeRels: true}) YIELD node
+RETURN
+   node
+----
