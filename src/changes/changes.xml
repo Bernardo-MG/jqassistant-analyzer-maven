@@ -18,7 +18,10 @@
             Cleaned up project.
          </action>
       </release>
-      <release version="1.1.0" date="2020-08-07" description="">
+      <release version="1.1.0" date="2020-08-28" description="">
+         <action dev="bmg" type="add">
+            Added graph merge profile.
+         </action>
       </release>
    </body>
 </document>
