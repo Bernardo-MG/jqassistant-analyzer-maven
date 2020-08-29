@@ -137,7 +137,7 @@
                   <artifactId>jqassistant-maven-plugin</artifactId>
                   <executions>
                      <execution>
-                        <id>jqassistant-prune</id>
+                        <id>jqassistant-merge</id>
                         <goals>
                            <goal>analyze</goal>
                         </goals>
