@@ -33,4 +33,28 @@ To scan more than one project edit the JQAssitant Plugin configuration in the PO
 </scanIncludes>
 ```
 
+## Adding Rules
+
+As indicated in [JQAssistant's docs][jqassistant-rules], new rules can be added to the /jqassistant folder.
+
+Remember to register them into the JQAssistant plugin execution:
+
+```
+<execution>
+   <id>jqassistant-analyze</id>
+   <goals>
+      <goal>analyze</goal>
+   </goals>
+   <configuration>
+      <groups>
+         <group>custom:Default</group>
+      </groups>
+      <concepts>
+         <concept>custom:*</concept>
+      </concepts>
+   </configuration>
+</execution>
+```
+
 [jqassistant-plugin]: https://github.com/kontext-e/jqassistant-plugins
+[jqassistant-rules]: http://jqassistant.github.io/jqassistant/doc/1.8.0/#_add_a_rule
