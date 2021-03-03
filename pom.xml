@@ -12,7 +12,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.3.4</version>
+      <version>1.4.0</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -21,7 +21,7 @@
 
    <groupId>com.bernardomg.jqassistant</groupId>
    <artifactId>jqassistant-maven-analyzer</artifactId>
-   <version>1.1.0</version>
+   <version>1.1.1</version>
    <packaging>jar</packaging>
 
    <name>JQAssistant Maven Analyzer</name>
@@ -137,7 +137,7 @@
                   <artifactId>jqassistant-maven-plugin</artifactId>
                   <executions>
                      <execution>
-                        <id>jqassistant-prune</id>
+                        <id>jqassistant-merge</id>
                         <goals>
                            <goal>analyze</goal>
                         </goals>
@@ -193,6 +193,10 @@
 
    <properties>
       <!-- ============================================== -->
+      <!-- =============== MAVEN VERSION ================ -->
+      <!-- ============================================== -->
+      <maven.version>3.6.0</maven.version>
+      <!-- ============================================== -->
       <!-- ================ JAVA VERSION ================ -->
       <!-- ============================================== -->
       <java.version>1.8</java.version>
@@ -209,18 +213,18 @@
       <!-- ============================================== -->
       <log4j.version>2.13.3</log4j.version>
       <slf4j.version>1.7.30</slf4j.version>
-      <plugin.jqassistant.version>1.8.0</plugin.jqassistant.version>
-      <plugin.jqassistant.apoc.version>${plugin.jqassistant.version}</plugin.jqassistant.apoc.version>
-      <plugin.jqassistant.dashboard.version>${plugin.jqassistant.version}</plugin.jqassistant.dashboard.version>
+      <plugin.jqassistant.version>1.9.1</plugin.jqassistant.version>
+      <plugin.jqassistant.apoc.version>1.9.0</plugin.jqassistant.apoc.version>
+      <plugin.jqassistant.dashboard.version>1.9.0</plugin.jqassistant.dashboard.version>
       <plugin.jqassistant.git.version>${plugin.jqassistant.version}</plugin.jqassistant.git.version>
-      <plugin.jqassistant.graphalg.version>${plugin.jqassistant.version}</plugin.jqassistant.graphalg.version>
-      <plugin.jqassistant.jacoco.version>${plugin.jqassistant.version}</plugin.jqassistant.jacoco.version>
-      <plugin.jqassistant.plantuml.version>${plugin.jqassistant.version}</plugin.jqassistant.plantuml.version>
-      <plugin.jqassistant.pmd.version>${plugin.jqassistant.version}</plugin.jqassistant.pmd.version>
+      <plugin.jqassistant.graphalg.version>1.9.0</plugin.jqassistant.graphalg.version>
+      <plugin.jqassistant.jacoco.version>1.8.0</plugin.jqassistant.jacoco.version>
+      <plugin.jqassistant.plantuml.version>1.9.0</plugin.jqassistant.plantuml.version>
+      <plugin.jqassistant.pmd.version>1.8.0</plugin.jqassistant.pmd.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>2.0.8</site.skin.version>
+      <site.skin.version>2.0.11</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/maven/jqassistant-maven-analyzer/view</bintrayURL>
       <mavenURL>http://mvnrepository.com/artifact/${project.groupId}/${project.artifactId}</mavenURL>
    </properties>
