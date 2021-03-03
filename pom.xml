@@ -214,13 +214,13 @@
       <log4j.version>2.13.3</log4j.version>
       <slf4j.version>1.7.30</slf4j.version>
       <plugin.jqassistant.version>1.9.1</plugin.jqassistant.version>
-      <plugin.jqassistant.apoc.version>${plugin.jqassistant.version}</plugin.jqassistant.apoc.version>
-      <plugin.jqassistant.dashboard.version>${plugin.jqassistant.version}</plugin.jqassistant.dashboard.version>
+      <plugin.jqassistant.apoc.version>1.9.0</plugin.jqassistant.apoc.version>
+      <plugin.jqassistant.dashboard.version>1.9.0</plugin.jqassistant.dashboard.version>
       <plugin.jqassistant.git.version>${plugin.jqassistant.version}</plugin.jqassistant.git.version>
-      <plugin.jqassistant.graphalg.version>${plugin.jqassistant.version}</plugin.jqassistant.graphalg.version>
-      <plugin.jqassistant.jacoco.version>${plugin.jqassistant.version}</plugin.jqassistant.jacoco.version>
-      <plugin.jqassistant.plantuml.version>${plugin.jqassistant.version}</plugin.jqassistant.plantuml.version>
-      <plugin.jqassistant.pmd.version>${plugin.jqassistant.version}</plugin.jqassistant.pmd.version>
+      <plugin.jqassistant.graphalg.version>1.9.0</plugin.jqassistant.graphalg.version>
+      <plugin.jqassistant.jacoco.version>1.8.0</plugin.jqassistant.jacoco.version>
+      <plugin.jqassistant.plantuml.version>1.9.0</plugin.jqassistant.plantuml.version>
+      <plugin.jqassistant.pmd.version>1.8.0</plugin.jqassistant.pmd.version>
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
