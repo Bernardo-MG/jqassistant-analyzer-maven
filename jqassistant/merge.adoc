@@ -21,3 +21,24 @@ CALL
 RETURN
    node
 ----
+
+[[merge:MergeDuplicatedMethods]]
+.Merges duplicated methods and their relationships based on full path
+[source,cypher,role=concept,requiresConcepts="merge:MergeDuplicatedTypes"]
+----
+MATCH
+   (class)-[:DECLARES]->(method:Java:Method)
+WHERE
+   NOT method:Constructor
+WITH
+   method.signature AS name,
+   class.fqn AS root,
+   COLLECT(method) AS nodes,
+   COUNT(*) AS count
+WHERE
+   count > 1
+CALL
+   apoc.refactor.mergeNodes(nodes, {mergeRels: true}) YIELD node
+RETURN
+   node
+----
