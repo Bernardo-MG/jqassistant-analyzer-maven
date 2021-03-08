@@ -28,5 +28,10 @@
             Updated dependencies.
          </action>
       </release>
+      <release version="1.1.2" date="2021-03-08" description="Corrected merge">
+         <action dev="bmg" type="add">
+            The merge option also merges methods.
+         </action>
+      </release>
    </body>
 </document>
