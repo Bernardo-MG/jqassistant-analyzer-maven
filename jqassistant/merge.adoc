@@ -28,8 +28,6 @@ RETURN
 ----
 MATCH
    (class)-[:DECLARES]->(method:Java:Method)
-WHERE
-   NOT method:Constructor
 WITH
    method.signature AS name,
    class.fqn AS root,
