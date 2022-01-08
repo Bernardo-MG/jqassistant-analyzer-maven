@@ -211,8 +211,6 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <log4j.version>2.13.3</log4j.version>
-      <slf4j.version>1.7.30</slf4j.version>
       <plugin.jqassistant.version>1.11.1</plugin.jqassistant.version>
       <plugin.jqassistant.apoc.version>1.10.0</plugin.jqassistant.apoc.version>
       <plugin.jqassistant.dashboard.version>1.10.0</plugin.jqassistant.dashboard.version>
