@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   tests:
     name: Tests
-    uses: Bernardo-MG/github-workflow/.github/workflows/maven_testing.yml@v1
+    uses: Bernardo-MG/github-workflow/.github/workflows/maven_testing_11.yml@v1
 
   deploy_develop_docs:
     name: Deploy development docs
