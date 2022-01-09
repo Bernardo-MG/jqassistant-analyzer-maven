@@ -197,7 +197,6 @@
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
       <site.skin.version>2.2.5</site.skin.version>
-      <githubArtifactURL><![CDATA[https://github.com/Bernardo-MG?tab=packages&amp;repo_name=jqassistant-maven-analyzer]]></githubArtifactURL>
    </properties>
 
    <!-- ********************************************** -->
