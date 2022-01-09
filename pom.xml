@@ -348,6 +348,18 @@
                   <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
                   <version>${plugin.jqassistant.plantuml.version}</version>
                </dependency>
+               <dependency>
+                  <!-- JQA JaCoCo plugin -->
+                  <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                  <artifactId>jqassistant.plugin.jacoco</artifactId>
+                  <version>${plugin.jqassistant.jacoco.version}</version>
+               </dependency>
+               <dependency>
+                  <!-- JQA PMD plugin -->
+                  <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                  <artifactId>jqassistant.plugin.pmd</artifactId>
+                  <version>${plugin.jqassistant.pmd.version}</version>
+               </dependency>
             </dependencies>
          </plugin>
       </plugins>
