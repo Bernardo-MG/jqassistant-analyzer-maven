@@ -40,3 +40,22 @@ CALL
 RETURN
    node
 ----
+
+[[merge:MergeDuplicatedMavenArtifacts]]
+.Merges duplicated Maven artifacts and their relationships based on name and group
+[source,cypher,role=concept]
+----
+MATCH
+   (node:Maven:Artifact)
+WITH
+   node.name AS name,
+   node.group AS group,
+   COLLECT(method) AS nodes,
+   COUNT(*) AS count
+WHERE
+   count > 1
+CALL
+   apoc.refactor.mergeNodes(nodes, {mergeRels: true}) YIELD node
+RETURN
+   node
+----
