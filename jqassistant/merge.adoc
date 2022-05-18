@@ -43,7 +43,7 @@ RETURN
 
 [[merge:MergeDuplicatedMavenArtifacts]]
 .Merges duplicated Maven artifacts and their relationships based on name and group
-[source,cypher,role=concept]
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
 ----
 MATCH
    (node:Maven:Artifact)
@@ -55,7 +55,7 @@ WITH
 WHERE
    count > 1
 CALL
-   apoc.refactor.mergeNodes(nodes, {mergeRels: true}) YIELD node
+   apoc.refactor.mergeNodes(nodes) YIELD node
 RETURN
    node
 ----
