@@ -50,7 +50,7 @@ MATCH
 WITH
    node.name AS name,
    node.group AS group,
-   COLLECT(method) AS nodes,
+   COLLECT(node) AS nodes,
    COUNT(*) AS count
 WHERE
    count > 1
