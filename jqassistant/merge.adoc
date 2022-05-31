@@ -43,12 +43,14 @@ RETURN
 
 [[merge:MergeDuplicatedMavenArtifacts]]
 .Merges duplicated Maven artifacts and their relationships based on name and group
-[source,cypher,role=concept,requiresConcepts="maven3:*"]
+[source,cypher,role=concept,requiresConcepts="maven3:*,dependency:*"]
 ----
 MATCH
    (node:Maven:Artifact)
 WITH
-   node.fqn AS name,
+   node.name AS name,
+   node.group AS group,
+   node.version AS version,
    COLLECT(node) AS nodes,
    COUNT(*) AS count
 WHERE
