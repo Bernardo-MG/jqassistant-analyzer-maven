@@ -51,6 +51,7 @@ WITH
    node.name AS name,
    node.group AS group,
    node.version AS version,
+   node.type AS type,
    COLLECT(node) AS nodes,
    COUNT(*) AS count
 WHERE
