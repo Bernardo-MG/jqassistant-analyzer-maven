@@ -19,21 +19,6 @@ RETURN
    artifact
 ----
 
-[[dependency:CopyVersionFromSuperPom]]
-.Copies version from super POM when it is missing in the artifact
-[source,cypher,role=concept,requiresConcepts="maven3:*"]
-----
-MATCH
-   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
-   (pom:Maven:Pom)-[:HAS_PARENT]->(parent:Maven:Artifact)
-WHERE
-   artifact.version IS NULL
-SET
-   artifact.version = parent.version
-RETURN
-   artifact
-----
-
 [[dependency:CopyGroupFromParentXml]]
 .Copies group from parent XML node when it is missing in the artifact
 [source,cypher,role=concept,requiresConcepts="dependency:CopyGroupFromSuperPom"]
@@ -46,6 +31,21 @@ WHERE
    artifact.group IS NULL
 SET
    artifact.group = groupText.value
+RETURN
+   artifact
+----
+
+[[dependency:CopyVersionFromSuperPom]]
+.Copies version from super POM when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_PARENT]->(parent:Maven:Artifact)
+WHERE
+   artifact.version IS NULL
+SET
+   artifact.version = parent.version
 RETURN
    artifact
 ----
@@ -66,9 +66,25 @@ RETURN
    artifact
 ----
 
+[[dependency:CopyVersionFromSuperPomManaged]]
+.Copies version from super-POM managed dependencies when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="dependency:CopyVersionFromParentXml"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_ROOT_ELEMENT]->(:Xml {name: 'project'})-[:HAS_ELEMENT*]->(version:Xml {name: 'version'}),
+   (version)-[:HAS_TEXT]->(versionText:Xml)
+WHERE
+   artifact.version IS NULL
+SET
+   artifact.version = versionText.value
+RETURN
+   artifact
+----
+
 [[dependency:LinkMavenArtifacts]]
 .Links dependencies between Maven artifacts
-[source,cypher,role=concept,requiresConcepts="dependency:CopyGroupFromSuperPom,dependency:CopyGroupFromParentXml"]
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
 ----
 MATCH
    (p:Pom),
