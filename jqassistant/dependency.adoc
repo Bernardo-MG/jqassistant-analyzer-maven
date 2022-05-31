@@ -34,3 +34,20 @@ SET
 RETURN
    artifact
 ----
+
+[[dependency:LinkMavenArtifacts]]
+.Links dependencies between Maven artifacts
+[source,cypher,role=concept,requiresConcepts="dependency:CopyGroupFromSuperPom,dependency:CopyGroupFromParentXml"]
+----
+MATCH
+   (p:Pom),
+   (p)-[:DECLARES_DEPENDENCY]->(d:Dependency)-[:TO_ARTIFACT]->(a:Artifact),
+   (p)-[:DESCRIBES]->(s)
+CREATE
+   (s)-[:DEPENDS_ON]->(a)
+return
+   p,
+   d,
+   a,
+   s
+----
