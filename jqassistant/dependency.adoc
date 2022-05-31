@@ -6,7 +6,7 @@
 
 [[dependency:CopyGroupFromSuperPom]]
 .Copies group from super POM when it is missing in the artifact
-[source,cypher,role=concept]
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
 ----
 MATCH
    (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
