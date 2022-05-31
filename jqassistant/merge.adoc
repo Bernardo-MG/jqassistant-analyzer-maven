@@ -48,8 +48,7 @@ RETURN
 MATCH
    (node:Maven:Artifact)
 WITH
-   node.name AS name,
-   node.group AS group,
+   node.fqn AS name,
    COLLECT(node) AS nodes,
    COUNT(*) AS count
 WHERE
