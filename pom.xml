@@ -118,9 +118,11 @@
                         </goals>
                         <configuration>
                            <groups>
+                              <group>dependency:Default</group>
                               <group>merge:Default</group>
                            </groups>
                            <concepts>
+                              <concept>dependency:*</concept>
                               <concept>merge:*</concept>
                            </concepts>
                            <warnOnSeverity>MINOR</warnOnSeverity>

@@ -1,0 +1,20 @@
+== Dependency Info
+
+[[dependency:Default]]
+[role=group,includesConstraints="dependency:*"]
+== Default Rules
+
+[[dependency:CopyGroupFromSuperPom]]
+.Copies group from super POM when it is missing in the artifact
+[source,cypher,role=concept]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_PARENT]->(parent:Maven:Artifact)
+WHERE
+   artifact.group IS NULL
+SET
+   artifact.group = parent.group
+RETURN
+   artifact
+----
