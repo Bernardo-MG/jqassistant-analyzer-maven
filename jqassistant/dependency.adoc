@@ -85,6 +85,23 @@ RETURN
    artifact
 ----
 
+[[dependency:ReplaceVersionFromProperty]]
+.Applies property replacement to the dependency version
+[source,cypher,role=concept]
+----
+MATCH
+   (pom:Pom)-[:DECLARES_DEPENDENCY]->(:Dependency)-[:TO_ARTIFACT]->(artifact:Artifact),
+   (pom)-[HAS_PROPERTY]->(property:Property)
+WHERE
+   artifact.version STARTS WITH '${'
+   AND artifact.version ENDS WITH '}'
+   AND artifact.version = ('${' + property.name + '}')
+SET
+   artifact.version = property.value
+RETURN
+   artifact
+----
+
 [[dependency:LinkMavenArtifacts]]
 .Links dependencies between Maven artifacts
 [source,cypher,role=concept,requiresConcepts="maven3:*"]
