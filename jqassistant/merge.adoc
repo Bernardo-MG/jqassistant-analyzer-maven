@@ -41,6 +41,24 @@ RETURN
    node
 ----
 
+[[merge:MergeDuplicatedMavenPOMs]]
+.Merges duplicated Maven POMs
+[source,cypher,role=concept,requiresConcepts="maven3:*,dependency:*"]
+----
+MATCH
+   (node:Maven:Pom)
+WITH
+   node.artifactId AS artifactId,
+   COLLECT(node) AS nodes,
+   COUNT(*) AS count
+WHERE
+   count > 1
+CALL
+   apoc.refactor.mergeNodes(nodes) YIELD node
+RETURN
+   node
+----
+
 [[merge:MergeDuplicatedMavenArtifacts]]
 .Merges duplicated Maven artifacts and their relationships based on name and group
 [source,cypher,role=concept,requiresConcepts="maven3:*,dependency:*"]
