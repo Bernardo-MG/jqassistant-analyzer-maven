@@ -100,6 +100,42 @@
       <!-- =============== JQA PROFILES ================= -->
       <!-- ============================================== -->
       <profile>
+         <!-- Dependency data profile. -->
+         <!-- Cleans up the dependency graph -->
+         <id>dependency</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <!-- JQAssistant -->
+                  <!-- Architecture analysis tool. -->
+                  <groupId>com.buschmais.jqassistant</groupId>
+                  <artifactId>jqassistant-maven-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>jqassistant-merge</id>
+                        <goals>
+                           <goal>analyze</goal>
+                        </goals>
+                        <configuration>
+                           <groups>
+                              <group>dependency:Default</group>
+                           </groups>
+                           <concepts>
+                              <concept>dependency:*</concept>
+                           </concepts>
+                           <warnOnSeverity>MINOR</warnOnSeverity>
+                           <failOnSeverity>CRITICAL</failOnSeverity>
+                           <rule>
+                              <defaultConceptSeverity>INFO</defaultConceptSeverity>
+                           </rule>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+      <profile>
          <!-- Graph merge profile. -->
          <!-- Cleans up the generated graph -->
          <id>merge</id>
