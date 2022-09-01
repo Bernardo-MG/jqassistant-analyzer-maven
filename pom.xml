@@ -224,7 +224,7 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <plugin.jqassistant.version>1.12.0</plugin.jqassistant.version>
+      <plugin.jqassistant.version>1.11.1</plugin.jqassistant.version>
       <plugin.jqassistant.apoc.version>1.10.0</plugin.jqassistant.apoc.version>
       <plugin.jqassistant.dashboard.version>1.10.0</plugin.jqassistant.dashboard.version>
       <plugin.jqassistant.graphalg.version>1.10.0</plugin.jqassistant.graphalg.version>
