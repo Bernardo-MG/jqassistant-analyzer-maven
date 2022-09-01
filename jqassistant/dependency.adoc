@@ -1,0 +1,120 @@
+== Dependency Info
+
+[[dependency:Default]]
+[role=group,includesConstraints="dependency:*"]
+== Default Rules
+
+[[dependency:CopyGroupFromSuperPom]]
+.Copies group from super POM when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_PARENT]->(parent:Maven:Artifact)
+WHERE
+   artifact.group IS NULL
+SET
+   artifact.group = parent.group
+RETURN
+   artifact
+----
+
+[[dependency:CopyGroupFromParentXml]]
+.Copies group from parent XML node when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="dependency:CopyGroupFromSuperPom"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_ROOT_ELEMENT]->(:Xml {name: 'project'})-[:HAS_ELEMENT*]->(group:Xml {name: 'groupId'}),
+   (group)-[:HAS_TEXT]->(groupText:Xml)
+WHERE
+   artifact.group IS NULL
+SET
+   artifact.group = groupText.value
+RETURN
+   artifact
+----
+
+[[dependency:CopyVersionFromSuperPom]]
+.Copies version from super POM when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_PARENT]->(parent:Maven:Artifact)
+WHERE
+   artifact.version IS NULL
+SET
+   artifact.version = parent.version
+RETURN
+   artifact
+----
+
+[[dependency:CopyVersionFromParentXml]]
+.Copies version from parent XML node when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="dependency:CopyVersionFromSuperPom"]
+----
+MATCH
+   (pom:Maven:Pom)-[:DESCRIBES]->(artifact:Maven:Artifact),
+   (pom:Maven:Pom)-[:HAS_ROOT_ELEMENT]->(:Xml {name: 'project'})-[:HAS_ELEMENT*]->(version:Xml {name: 'version'}),
+   (version)-[:HAS_TEXT]->(versionText:Xml)
+WHERE
+   artifact.version IS NULL
+SET
+   artifact.version = versionText.value
+RETURN
+   artifact
+----
+
+[[dependency:CopyVersionFromSuperPomManaged]]
+.Copies version from super-POM managed dependencies when it is missing in the artifact
+[source,cypher,role=concept,requiresConcepts="dependency:CopyVersionFromParentXml"]
+----
+MATCH
+   (pom:Pom)-[:DESCRIBES]->(:Artifact)-[:DEPENDS_ON]->(artifact:Artifact),
+   (pom)-[HAS_PARENT]->(parent:Artifact),
+   (parentPom:Pom)-[:DESCRIBES]->(parent),
+   (parentPom)-[:MANAGES_DEPENDENCY]->(:Dependency)-[:TO_ARTIFACT]->(managed:Artifact)
+WHERE
+   artifact.version IS NULL
+   AND artifact.name = managed.name
+   AND artifact.group = managed.group
+SET
+   artifact.version = managed.version
+RETURN
+   artifact
+----
+
+[[dependency:ReplaceVersionFromProperty]]
+.Applies property replacement to the dependency version
+[source,cypher,role=concept]
+----
+MATCH
+   (pom:Pom)-[:DECLARES_DEPENDENCY]->(:Dependency)-[:TO_ARTIFACT]->(artifact:Artifact),
+   (pom)-[HAS_PROPERTY]->(property:Property)
+WHERE
+   artifact.version STARTS WITH '${'
+   AND artifact.version ENDS WITH '}'
+   AND artifact.version = ('${' + property.name + '}')
+SET
+   artifact.version = property.value
+RETURN
+   artifact
+----
+
+[[dependency:LinkMavenArtifacts]]
+.Links dependencies between Maven artifacts
+[source,cypher,role=concept,requiresConcepts="maven3:*"]
+----
+MATCH
+   (p:Pom),
+   (p)-[:DECLARES_DEPENDENCY]->(d:Dependency)-[:TO_ARTIFACT]->(a:Artifact),
+   (p)-[:DESCRIBES]->(s)
+CREATE
+   (s)-[:DEPENDS_ON]->(a)
+return
+   p,
+   d,
+   a,
+   s
+----
