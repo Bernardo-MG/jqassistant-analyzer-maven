@@ -1,0 +1,127 @@
+jqassistant:
+
+  maven:
+    # Force the module where 'mvn' is being executed to be used as root module. The database will be created in this module and contain all information of the reactor. Rules will be read from the rules folder of this module.
+    #
+    # jqassistant.maven.use-execution-root-as-project-root: true|false
+    use-execution-root-as-project-root: false
+
+    # Re-use store instances across all modules of the Maven reactor. Can be set to false for mitigating problems in specific setups,
+    # the jQAssistant Maven plugin will display an according hint when this is necessary.
+    #
+    # jqassistant.maven.reuse-store: true|false
+    reuse-store: true
+
+  # Controls whether the execution of jQAssistant shall be skipped
+  #
+  # -Djqassistant.skip: true|false
+  skip: false
+
+  # The store configuration
+  store:
+
+    # URI of the database to connect to. Supported URI schemes are 'file' for embedded databases and 'bolt' for connecting to a running Neo4j instance (3.x+), e.g.
+    #
+    # -Djqassistant.store.uri
+    uri: file://target/jqassistant/store
+
+  # The analyze configuration
+  analyze:
+
+    # The rule configuration
+    rule:
+
+      # The name of the directory containing project rules.
+      #
+      # -Djqassistant.analyze.rule.directory
+      directory: jqassistant/
+
+      # The default severity of concepts without an explicit severity.
+      #
+      # -Djqassistant.analyze.rule.default-concept-severity: INFO|MINOR|MAJOR|CRITICAL|BLOCKER
+      default-concept-severity: INFO
+
+      # The default severity of constraint without an explicit severity.
+      #
+      # -Djqassistant.analyze.rule.default-constraint-severity: INFO|MINOR|MAJOR|CRITICAL|BLOCKER
+      default-constraint-severity: MAJOR
+
+      # The default severity of groups without an explicit severity.
+      #
+      # -Djqassistant.analyze.rule.default-group-severity: INFO|MINOR|MAJOR|CRITICAL|BLOCKER
+      default-group-severity:
+
+    # The report configuration
+    report:
+
+      # The properties to configure report plugins. The supported properties are plugin specific.
+      #
+      # -Djqassistant.analyze.report.properties
+      properties:
+        # plugin.property.key: value
+
+      # Determines the severity level for reporting a warning.
+      #
+      # -Djqassistant.analyze.report.warn-on-severity: INFO|MINOR|MAJOR|CRITICAL|BLOCKER|NEVER
+      warn-on-severity: MINOR
+
+      # Determines the severity level for reporting a failure.
+      #
+      # -Djqassistant.analyze.report.fail-on-severity: INFO|MINOR|MAJOR|CRITICAL|BLOCKER|NEVER
+      fail-on-severity: CRITICAL
+
+      # Determines if jQAssistant shall continue the build if failures have been detected.
+      #
+      # -Djqassistant.analyze.report.continue-on-failure: true|false
+      continue-on-failure: false
+
+      # Create an archive containing all generated reports.
+      #
+      # -Djqassistant.analyze.report.create-archive: true|false
+      create-archive: false
+
+    # The concepts to be applied.
+    #
+    # -Djqassistant.analyze.concepts[0]
+    concepts:
+      - git:*
+      - java:*
+      - java8:*
+      - jpa2:*
+      - junit:*
+      - junit4:*
+      - spring-boot:*
+      - spring-component:*
+      - spring-data:*
+      - spring-injection:*
+      - spring-transaction:*
+
+    # The constraints to be validated.
+    #
+    # -Djqassistant.analyze.constraints[0]
+    constraints:
+    # - my-constraint
+
+    # The groups to be executed.
+    #
+    # -Djqassistant.analyze.groups[0]
+    groups:
+      - junit4:Default
+      - spring-boot:Strict
+      - jqassistant-dashboard:Default
+
+    # The parameters to be passed to the executed rules.
+    #
+    # -Djqassistant.analyze.rule-parameters."parameterName"
+    rule-parameters:
+    # parameterName: value
+
+    # Execute concepts even if they have already been applied before
+    #
+    # -Djqassistant.analyze.execute-applied-concepts: true|false
+    execute-applied-concepts: false
+
+    # The execution time [seconds] for rules (concepts/constraints) to show a warning. Can be used as a hint for optimization.
+    #
+    # -Djqassistant.analyze.warn-on-rule-execution-time-seconds
+    warn-on-rule-execution-time-seconds: 5
